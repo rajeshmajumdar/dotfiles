@@ -67,6 +67,7 @@ nnoremap <C-l> :Files<CR>
 nnoremap <silent> vv <C-w>v
 nnoremap <leader>r :%s///g<left><left>
 nnoremap <leader>rc :%s///gc<left><left><left>
+xnoremap("<leader>p", "\"_dP")
 
 let g:tmux_navigator_no_mappings = 1
 
