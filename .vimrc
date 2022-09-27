@@ -54,7 +54,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap ,lic :-1read ~/.vim/templates/LICENSE<CR>
-nnoremap ,cc  :-1read ~/.vim/templates/skeleton.cpp<CR>9jji
+nnoremap ,cc  :-1read ~/.vim/templates/skeleton.cpp<CR>10ji
 nmap ; :
 noremap ;; ;
 nnoremap <silent> vv <C-w>v
