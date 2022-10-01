@@ -2,6 +2,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
+Plug 'voldikss/vim-floaterm'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
@@ -25,9 +27,10 @@ try
 catch
 endtry
 
-" Vim variables
+" Airline configurations
 let g:airline_powerline_fonts = 1
-let g:clang_library_path = "/Library/Developer/CommandLineTools/usr/lib/libclang.dylib"
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='atomic'
 
 " Basic vim configs
 syntax on
@@ -68,6 +71,9 @@ else
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+" Check for tags
+set tags=tags
+
 " No annoying sounds on error
 set noerrorbells
 set novisualbell
@@ -86,6 +92,23 @@ nnoremap <leader>r :%s///g<left><left>
 nnoremap <leader>rc :%s///gc<left><left><left>
 xnoremap("<leader>p", "\"_dP")
 
+" Select all
+nnoremap <C-a> ggVG
+inoremap <C-a> <esc>ggVG
+vnoremap <C-a> <esc>ggVG
+
+" Copy to macOS Clipboard
+vnoremap <silent> <C-y> "*y
+
+" Floaterm configurations
+let g:floaterm_title="n0xne"
+
+nnoremap <C-t> :silent! FloatermToggle<CR>
+tnoremap <C-t> <C-\><C-n>:FloatermToggle<CR>
+nnoremap <C-q> :silent! FloatermKill<CR>
+tnoremap <C-q> <C-\><C-n>:FloatermKill<CR>
+inoremap <F12> <esc>:term<CR>
+
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/</C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?</C-R>=@/<CR><CR>
@@ -94,10 +117,9 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?</C-R>=@/<CR><CR>
 map <silent> <leader><CR> :noh<CR>
 
 " Buffer keybindings
-map <leader>xd :bclose<CR>:tabclose<CR>gT
-map <leader>xa :bufdo xd<CR>
-map <leader>l :bnext<CR>
-map <leader>h :bprevious<CR>
+nnoremap <silent> `` <C-^>
+nnoremap <silent> <Tab> :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -121,9 +143,6 @@ let &t_EI = "\e[2 q"
 " Plugins keybindings
 let g:tmux_navigator_no_mappings = 1
 
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <leader>m :NERDTreeToggle<CR>
-nnoremap <leader>, :NERDTreeFind<CR>
 nnoremap ,lic :-1read ~/.vim/templates/LICENSE<CR>
 nnoremap ,cc  :-1read ~/.vim/templates/skeleton.cpp<CR>9jji
 
@@ -132,6 +151,15 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <C-z> :TmuxNavigatePrevious<cr>
+
+" Nerdtree configs
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowLineNumbers = 1
+let g:NERDTreeMinimaUI = 1
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>m :NERDTreeToggle<CR>
+nnoremap <leader>, :NERDTreeFind<CR>
 
 " Compilation configs
 map <leader>z :call CompileRun()<CR>
@@ -161,3 +189,10 @@ func! CompileRun()
         exec "!cargo run"
     endif
 endfunc
+
+" Highlight TODO, DONE, BUG, etc
+if has("autocmd")
+    if v:version > 701
+        autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|DONE\|BUG\)')
+    endif
+endif
