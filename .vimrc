@@ -11,14 +11,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'rust-lang/rust.vim'
 Plug 'github/copilot.vim'
+Plug 'ianding1/leetcode.vim'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
-
-" Disable scrollbars
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
 
 " Turn persistent undo on
 try
@@ -27,13 +23,18 @@ try
 catch
 endtry
 
+" Clang configuration
+let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+
 " Airline configurations
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled=1
-let g:airline_theme='atomic'
+let g:airline_theme='onedark'
+let g:airline#extensions#tabline#formatter='unique_tail'
 
 " Basic vim configs
 syntax on
+colorscheme onedark
 filetype indent on
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=DarkGrey
@@ -61,6 +62,9 @@ set lazyredraw
 set magic
 set showmatch
 set mat=2
+
+" Github copilot disable
+let g:copilot_enabled = v:false
 
 " Wildmenu and ignore compiled files
 set wildmenu
@@ -91,6 +95,7 @@ nnoremap <silent> vv <C-w>v
 nnoremap <leader>r :%s///g<left><left>
 nnoremap <leader>rc :%s///gc<left><left><left>
 xnoremap("<leader>p", "\"_dP")
+nnoremap <leader>c :!
 
 " Select all
 nnoremap <C-a> ggVG
@@ -109,6 +114,14 @@ nnoremap <C-q> :silent! FloatermKill<CR>
 tnoremap <C-q> <C-\><C-n>:FloatermKill<CR>
 inoremap <F12> <esc>:term<CR>
 
+" Leetcode configuration
+let g:leetcode_browser='chrome'
+let g:leetcode_solution_filetype='cpp'
+nnoremap <leader>ll :LeetCodeList<CR>
+nnoremap <leader>lt :LeetCodeTest<CR>
+nnoremap <leader>ls :LeetCodeSubmit<CR>
+nnoremap <leader>lx :LeetCodeSignIn<CR>
+
 " Visual mode pressing * or # searches for the current selection
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/</C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?</C-R>=@/<CR><CR>
@@ -120,6 +133,11 @@ map <silent> <leader><CR> :noh<CR>
 nnoremap <silent> `` <C-^>
 nnoremap <silent> <Tab> :bn<CR>
 nnoremap <silent> <S-Tab> :bp<CR>
+nnoremap <leader>x :bd<CR>
+
+" Split tabs
+nnoremap <leader>vv <C-w>v
+nnoremap <leader>hh <C-w>s
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -144,7 +162,7 @@ let &t_EI = "\e[2 q"
 let g:tmux_navigator_no_mappings = 1
 
 nnoremap ,lic :-1read ~/.vim/templates/LICENSE<CR>
-nnoremap ,cc  :-1read ~/.vim/templates/skeleton.cpp<CR>9jji
+nnoremap ,cc  :-1read ~/.vim/templates/skeleton.cpp<CR>61jji
 
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
@@ -161,6 +179,16 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <leader>m :NERDTreeToggle<CR>
 nnoremap <leader>, :NERDTreeFind<CR>
 
+" Onedark configuration
+if (empty($TMUX))
+    if (has("nvim"))
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+endif
+
 " Compilation configs
 map <leader>z :call CompileRun()<CR>
 vmap <leader>z :call CompileRun()<CR>
@@ -171,7 +199,7 @@ func! CompileRun()
         exec "!gcc % -o %<"
         exec "!time ./%<"
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
+        exec "!g++ -std=c++17 % -o %<"
         exec "!time ./%<"
     elseif &filetype == 'java'
         exec "!javac %"
@@ -195,4 +223,13 @@ if has("autocmd")
     if v:version > 701
         autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|DONE\|BUG\)')
     endif
+endif
+
+" Neovide configurations
+if exists("g:neovide")
+    let g:neovide_refresh_rate=60
+    let g:neovide_refresh_rate_idle=5
+    let g:neovide_transparency=0.0
+    let g:transparency=0.8
+    let g:neovide_background_color = '#0f111f'.printf('%x', float2nr(255 * g:transparency))
 endif
