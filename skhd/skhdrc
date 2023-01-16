@@ -2,9 +2,6 @@
 cmd - return : open -a iTerm
 alt - return : open -a "Brave Browser"
 
-# Open browser
-alt - b : "${HOME}"/.config/yabai/script/open_brave.sh
-
 # Navigation
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
