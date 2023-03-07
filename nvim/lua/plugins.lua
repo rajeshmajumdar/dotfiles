@@ -39,15 +39,12 @@ return require('packer').startup(function(use)
   }
 
   use 'ThePrimeagen/harpoon'
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use 'christoomey/vim-tmux-navigator'
   use 'navarasu/onedark.nvim'
-  use 'rmagatti/alternate-toggler'
   use 'windwp/nvim-autopairs'
   use 'MattesGroeger/vim-bookmarks'
   use 'tom-anders/telescope-vim-bookmarks.nvim'
   use 'mg979/vim-visual-multi'
-  use 'gcmt/wildfire.vim'
   use 'tpope/vim-surround'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -64,6 +61,10 @@ return require('packer').startup(function(use)
   use 'folke/todo-comments.nvim'
   use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }}
+  use 'nvim-telescope/telescope-dap.nvim'
+  use 'mfussenegger/nvim-dap-python'
+  use 'theHamsta/nvim-dap-virtual-text'
 
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use {

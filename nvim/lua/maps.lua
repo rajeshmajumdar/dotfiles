@@ -48,6 +48,11 @@ keymap.set('n', "<leader>f", function()
   vim.lsp.buf.format()
 end)
 
+-- Buffer mappings
+keymap.set('n', '<Tab>', '<cmd>bnext<cr>')
+keymap.set('n', '<S-Tab>', '<cmd>bprev<cr>')
+keymap.set('n', '<S-x>', '<cmd>bdelete<cr>')
+
 -- Edit and reload nvim config file quickly
 keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<CR>", {
   silent = true,

@@ -1,6 +1,16 @@
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>f', builtin.find_files, {})
-vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+local keymap = vim.keymap
+
+keymap.set('n', '<leader>f', builtin.find_files, {})
+keymap.set('n', '<leader>g', builtin.current_buffer_fuzzy_find, {})
+keymap.set('n', '<leader>k', builtin.keymaps, {})
+keymap.set('n', '<leader>b', builtin.buffers, {})
+
+keymap.set('n', '<leader>lr', builtin.lsp_references, {})
+keymap.set('n', '<leader>lws', builtin.lsp_workspace_symbols, {})
+keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
+keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
+keymap.set('n', '<leader>ltd', builtin.lsp_type_definitions, {})
 
 local actions = require('telescope.actions')
 
@@ -26,3 +36,5 @@ require('telescope').setup {
     }
   }
 }
+
+-- ඞ

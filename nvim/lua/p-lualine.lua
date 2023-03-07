@@ -28,8 +28,13 @@ local conditions = {
   end,
 }
 
+local my_filename = require('lualine.components.filename'):extend()
+my_filename.icon_hl_cache = {}
+my_filename.apply_icon = require('lualine.components.filetype').apply_icon
+
 local config = {
   options = {
+    icons_enabled = true,
     component_separators = '',
     section_separators = '',
     theme = {
@@ -104,51 +109,17 @@ ins_left {
 }
 
 ins_left {
-  'filename',
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
-}
-
-ins_left { 'location' }
-
-ins_left {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', info = ' ' },
-  diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
-  },
-}
-
-ins_left {
   function()
     return '%='
   end,
 }
 
 ins_left {
-  function()
-    local msg = 'No active LSP'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },
+  my_filename,
+  colored = true
 }
 
-ins_right { 'progress' }
+ins_right { 'location' }
 
 ins_right {
   'branch',
