@@ -25,6 +25,9 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
 opt.autoread = true
 vim.bo.autoread = true
 
@@ -33,6 +36,9 @@ opt.list = true
 
 opt.cursorline = true
 opt.termguicolors = true
+
+opt.updatetime = 50
+opt.wrap = false
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()

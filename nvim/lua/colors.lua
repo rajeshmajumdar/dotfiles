@@ -1,5 +1,5 @@
 vim.g.everforest_diagnostic_line_highlight = 1
-vim.cmd('colorscheme everforest')
+vim.cmd('colorscheme onedark')
 
 vim.fn.sign_define({
   {
