@@ -5,10 +5,10 @@ vim.cmd([[
   func! CompileRun()
       exec "w"
       if &filetype == 'c'
-          exec "!gcc % -o %<"
+          exec "!gcc % -g -o %<"
           exec "!time ./%<"
       elseif &filetype == 'cpp'
-          exec "!g++ -std=c++17 % -o %<"
+          exec "!g++ -std=c++17 % -g -o %<"
           exec "!time ./%<"
       elseif &filetype == 'java'
           exec "!javac %"

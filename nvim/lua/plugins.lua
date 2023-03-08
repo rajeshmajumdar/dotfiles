@@ -38,33 +38,45 @@ return require('packer').startup(function(use)
     tag = 'nightly'
   }
 
+  -- Movement
   use 'ThePrimeagen/harpoon'
   use 'christoomey/vim-tmux-navigator'
-  use 'navarasu/onedark.nvim'
-  use 'windwp/nvim-autopairs'
   use 'MattesGroeger/vim-bookmarks'
   use 'tom-anders/telescope-vim-bookmarks.nvim'
-  use 'mg979/vim-visual-multi'
+
+  -- Colors & UI
+  use 'navarasu/onedark.nvim'
+  use 'xiyaowong/nvim-transparent'
+  use 'j-hui/fidget.nvim'
+
+  -- Text
+  use 'windwp/nvim-autopairs'
   use 'tpope/vim-surround'
+  use 'mbbill/undotree'
+  use 'folke/todo-comments.nvim'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  -- Selection
+  use 'mg979/vim-visual-multi'
+
+  -- Git
+  use 'tpope/vim-fugitive'
+
+  -- LSP & DAP
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-vsnip'
-  use 'xiyaowong/nvim-transparent'
-  use 'hrsh7th/vim-vsnip'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'onsails/lspkind-nvim'
-  use 'j-hui/fidget.nvim'
-  use 'folke/todo-comments.nvim'
-  use 'mbbill/undotree'
-  use 'tpope/vim-fugitive'
+    use 'onsails/lspkind-nvim'
   use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' }}
   use 'nvim-telescope/telescope-dap.nvim'
   use 'mfussenegger/nvim-dap-python'
   use 'theHamsta/nvim-dap-virtual-text'
+  use 'leoluz/nvim-dap-go'
 
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use {
