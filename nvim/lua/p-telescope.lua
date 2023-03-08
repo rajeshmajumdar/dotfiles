@@ -3,7 +3,7 @@ local keymap = vim.keymap
 
 keymap.set('n', '<leader>f', builtin.find_files, {})
 keymap.set('n', '<leader>g', builtin.current_buffer_fuzzy_find, {})
-keymap.set('n', '<leader>k', builtin.keymaps, {})
+keymap.set('n', '<leader>,', builtin.keymaps, {})
 keymap.set('n', '<leader>b', builtin.buffers, {})
 
 keymap.set('n', '<leader>lr', builtin.lsp_references, {})
@@ -36,5 +36,3 @@ require('telescope').setup {
     }
   }
 }
-
--- ඞ
