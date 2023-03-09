@@ -24,8 +24,8 @@ keymap.set('v', '<leader>j', "<cmd>m '>+1<cr>gv=gv", { noremap = true })
 keymap.set('v', '<leader>k', "<cmd>m '<-2<cr>gv=gv", { noremap = true })
 
 -- Moving in the file
-keymap.set('n', '<C-d>', '<C-d>zz')
-keymap.set('n', '<C-u>', '<C-u>zz')
+keymap.set('n', '<S-s>', '<C-d>zz')
+keymap.set('n', '<S-w>', '<C-u>zz')
 
 -- Search terms in middle
 keymap.set('n', 'n', 'nzzzv')
@@ -66,9 +66,9 @@ keymap.set("n", "<leader>sv", function()
   ]])
   vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
 end, {
-    silent = true,
-    desc = "reload init.lua"
-  }
+  silent = true,
+  desc = "reload init.lua"
+}
 )
 
 -- Always use very magic mode for searching

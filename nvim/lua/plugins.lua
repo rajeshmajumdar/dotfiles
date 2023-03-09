@@ -48,6 +48,8 @@ return require('packer').startup(function(use)
   use 'navarasu/onedark.nvim'
   use 'xiyaowong/nvim-transparent'
   use 'j-hui/fidget.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'echasnovski/mini.indentscope'
 
   -- Text
   use 'windwp/nvim-autopairs'
@@ -63,7 +65,8 @@ return require('packer').startup(function(use)
   use 'mg979/vim-visual-multi'
 
   -- Git
-  use 'tpope/vim-fugitive'
+  -- use 'tpope/vim-fugitive'
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   -- LSP & DAP
   use 'hrsh7th/cmp-nvim-lsp'

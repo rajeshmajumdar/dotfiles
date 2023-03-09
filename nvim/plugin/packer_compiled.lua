@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/Users/s/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/s/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/Users/s/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -158,6 +163,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/s/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.indentscope"] = {
+    loaded = true,
+    path = "/Users/s/.local/share/nvim/site/pack/packer/start/mini.indentscope",
+    url = "https://github.com/echasnovski/mini.indentscope"
+  },
+  neogit = {
+    loaded = true,
+    path = "/Users/s/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -263,11 +278,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/s/.local/share/nvim/site/pack/packer/start/vim-bookmarks",
     url = "https://github.com/MattesGroeger/vim-bookmarks"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "/Users/s/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-surround"] = {
     loaded = true,
