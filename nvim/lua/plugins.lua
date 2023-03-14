@@ -38,6 +38,9 @@ return require('packer').startup(function(use)
     tag = 'nightly'
   }
 
+  -- Optimization
+  use 'lewis6991/impatient.nvim'
+
   -- Movement
   use 'ThePrimeagen/harpoon'
   use 'christoomey/vim-tmux-navigator'

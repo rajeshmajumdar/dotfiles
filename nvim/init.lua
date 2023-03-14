@@ -5,6 +5,8 @@ require('styles')
 require('colors')
 require('text')
 
+require('impatient')
+
 require('p-lsp')
 require('p-lualine')
 require('p-telescope')

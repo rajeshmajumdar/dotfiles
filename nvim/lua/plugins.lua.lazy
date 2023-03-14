@@ -1,0 +1,113 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+  'neovim/nvim-lspconfig',
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+
+  {
+  'VonHeikemen/lsp-zero.nvim',
+    dependencies = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig' },
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
+    }
+  },
+
+  {
+  'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    tag = 'nightly'
+  },
+
+  -- Movement
+  {'ThePrimeagen/harpoon', lazy = true},
+  {'christoomey/vim-tmux-navigator', lazy = true},
+  {'MattesGroeger/vim-bookmarks', lazy = true},
+  {'tom-anders/telescope-vim-bookmarks.nvim', lazy = true},
+
+  -- Colors & UI
+  'navarasu/onedark.nvim',
+  'xiyaowong/nvim-transparent',
+  'j-hui/fidget.nvim',
+  'lukas-reineke/indent-blankline.nvim',
+  'echasnovski/mini.indentscope',
+
+  -- Text
+  'windwp/nvim-autopairs',
+  'tpope/vim-surround',
+  {'mbbill/undotree', lazy = true},
+  {'folke/todo-comments.nvim', lazy = true},
+  'hrsh7th/cmp-vsnip',
+  'hrsh7th/vim-vsnip',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+
+  -- Selection
+  'mg979/vim-visual-multi',
+
+  -- Git
+  -- use 'tpope/vim-fugitive'
+  {
+    'TimUntersberger/neogit',
+    dependencies = {'nvim-lua/plenary.nvim'}
+  },
+
+  -- LSP & DAP
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'onsails/lspkind-nvim',
+  { 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap' }},
+  'nvim-telescope/telescope-dap.nvim',
+  'mfussenegger/nvim-dap-python',
+  'theHamsta/nvim-dap-virtual-text',
+  'leoluz/nvim-dap-go',
+
+  {
+    'nvim-treesitter/nvim-treesitter', 
+    build = ":TSUpdate", 
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true }
+  },
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    dependencies = { { 'nvim-lua/plenary.nvim' } }
+  }
+}
+
+local opts = {
+  colorscheme = { "habamax" }
+}
+
+require("lazy").setup(plugins, opts)
