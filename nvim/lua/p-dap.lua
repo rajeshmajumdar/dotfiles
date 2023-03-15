@@ -44,11 +44,11 @@ vim.fn.sign_define('DapBreakpoint', {text='ඞ', texthl='', linehl='', numhl=''}
 
 local keymap = vim.keymap
 
-keymap.set('n', '<leader>dc', "<cmd>lua require'dap'.continue()<cr>")
-keymap.set('n', '<leader>dl', "<cmd>lua require'dap'.step_over()<cr>")
-keymap.set('n', '<leader>dj', "<cmd>lua require'dap'.step_into()<cr>")
-keymap.set('n', '<leader>dk', "<cmd>lua require'dap'.step_out()<cr>")
-keymap.set('n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
-keymap.set('n', '<leader>dB', "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>")
-keymap.set('n', '<leader>dm', "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
-keymap.set('n', '<leader>dr', "<cmd>lua require'dap'.repl.open()<cr>")
+keymap.set('n', '<leader>dc', "<cmd>lua require'dap'.continue()<cr>", {desc='Debug continue'})
+keymap.set('n', '<leader>dl', "<cmd>lua require'dap'.step_over()<cr>", {desc='Debug step-over'})
+keymap.set('n', '<leader>dj', "<cmd>lua require'dap'.step_into()<cr>", {desc='Debug step-into'})
+keymap.set('n', '<leader>dk', "<cmd>lua require'dap'.step_out()<cr>", {desc='Debug step-out'})
+keymap.set('n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", {desc='Toggle breakpoints'})
+keymap.set('n', '<leader>dB', "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>", {desc='Set breakpoints with condition'})
+keymap.set('n', '<leader>dm', "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>", {desc='Set breakpoints with log'})
+keymap.set('n', '<leader>dr', "<cmd>lua require'dap'.repl.open()<cr>", {desc='Debug repl open'})

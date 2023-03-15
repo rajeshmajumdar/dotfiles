@@ -1,17 +1,17 @@
 local builtin = require('telescope.builtin')
 local keymap = vim.keymap
 
-keymap.set('n', '<leader>f', builtin.find_files, {})
-keymap.set('n', '<leader>tbf', builtin.live_grep, {})
+keymap.set('n', '<leader>f', builtin.find_files, {desc = 'Telescope find files'})
+keymap.set('n', '<leader>tbf', builtin.live_grep, {desc = 'Telescope live grep'})
 
-keymap.set('n', '<leader>tk', builtin.keymaps, {})
-keymap.set('n', '<leader>b', builtin.buffers, {})
+keymap.set('n', '<leader>tk', builtin.keymaps, {desc = 'Telescope keymaps'})
+keymap.set('n', '<leader>b', builtin.buffers, {desc = 'Telescope buffers'})
 
-keymap.set('n', '<leader>lr', builtin.lsp_references, {})
-keymap.set('n', '<leader>lws', builtin.lsp_workspace_symbols, {})
-keymap.set('n', '<leader>li', builtin.lsp_implementations, {})
-keymap.set('n', '<leader>ld', builtin.lsp_definitions, {})
-keymap.set('n', '<leader>ltd', builtin.lsp_type_definitions, {})
+keymap.set('n', '<leader>lr', builtin.lsp_references, {desc = 'Telescope LSP references'})
+keymap.set('n', '<leader>lws', builtin.lsp_workspace_symbols, {desc = 'Telescope LSP workspace symbols'})
+keymap.set('n', '<leader>li', builtin.lsp_implementations, {desc = 'Telescope LSP implementations'})
+keymap.set('n', '<leader>ld', builtin.lsp_definitions, {desc = 'Telescope LSP definitions'})
+keymap.set('n', '<leader>ltd', builtin.lsp_type_definitions, {desc = 'Telescope LSP type definitions'})
 
 local actions = require('telescope.actions')
 

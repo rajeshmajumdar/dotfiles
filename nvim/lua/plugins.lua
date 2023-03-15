@@ -46,6 +46,8 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
   use 'MattesGroeger/vim-bookmarks'
   use 'tom-anders/telescope-vim-bookmarks.nvim'
+  use 'ggandor/leap.nvim'
+  use 'ggandor/flit.nvim'
 
   -- Colors & UI
   use 'navarasu/onedark.nvim'
@@ -68,8 +70,8 @@ return require('packer').startup(function(use)
   use 'mg979/vim-visual-multi'
 
   -- Git
-  -- use 'tpope/vim-fugitive'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use { 'lewis6991/gitsigns.nvim' }
 
   -- LSP & DAP
   use 'hrsh7th/cmp-nvim-lsp'

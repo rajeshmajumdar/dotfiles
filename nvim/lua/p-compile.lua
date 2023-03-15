@@ -20,7 +20,7 @@ vim.cmd([[
       elseif &filetype == 'html'
           exec "!google-chrome % &"
       elseif &filetype == 'go'
-          exec "!go build %<"
+          exec "!go build %"
           exec "!time go run %"
       elseif &filetype == 'rust'
           exec "!cargo run"

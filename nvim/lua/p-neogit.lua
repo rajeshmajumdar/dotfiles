@@ -2,4 +2,4 @@ require('neogit').setup()
 
 local keymap = vim.keymap
 
-keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>')
+keymap.set('n', '<leader>gg', '<cmd>Neogit<cr>', {desc = 'Neogit'})
