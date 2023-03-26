@@ -1,0 +1,91 @@
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+
+sketchybar --bar height=20                              
+sketchybar --bar margin=5               \
+                 corner_radius=10        \
+                 position=top         \
+                 color=0x00000000        \
+                 border_color=0x80cdf64a \
+                 border_width=0          \
+                 topmost=on              \
+                 y_offset=2.9              \
+                 sticky=off
+
+sketchybar --default updates=when_shown \
+                     label.drawing=on   \
+                     icon.drawing=on    \
+                     icon.font="sketchybar-app-font:Regular:12.0" \
+                     icon.color=0xffcdf64a
+
+sketchybar --default label.font="FiraCode Nerd Font Mono:Regular:12.0" \
+                     label.color=0xffcdf64a                \
+                     icon.font="FiraCode Nerd Font Mono:Regular:12.0"         \
+                     icon.color=0xffcdf64a                 \
+                     padding_left=5                        \
+                     padding_right=5                       \
+                     label.padding_left=4                  \
+                     label.padding_right=4                 \
+                     icon.padding_left=4                   \
+                     icon.padding_right=4
+
+sketchybar --add item clock right                              \
+           --set clock   update_freq=10                        \
+                         icon=􀐬                                \
+                         script="$PLUGIN_DIR/clock.sh"         \
+                                                               \
+                                                               \
+           --add item focus center                              \
+           --set focus script="$PLUGIN_DIR/focus.sh"            \
+                       icon.color=0xffcdf64a                    \
+                       icon.font="sketchybar-app-font:Regular:12.0" \
+           --subscribe focus front_app_switched window_focus title_change \
+                                                                \
+           --add item volume right                         \
+           --set volume  script="$PLUGIN_DIR/volume.sh"        \
+           --subscribe volume volume_change                    \
+                                                               \
+           --add item battery right                        \
+           --set battery script="$PLUGIN_DIR/battery.sh"       \
+                         update_freq=120                       \
+           --subscribe battery system_woke power_source_change \
+                                                               \
+           --add item apple left                       \
+           --set apple icon=􀣺                          \
+                       click_script="open -a 'Raycast'"  \
+           \
+           --add event spotify_update $SPOTIFY_EVENT \
+           \
+           --add item spotify left \
+           --set spotify script="$PLUGIN_DIR/spotify.sh" \
+           --subscribe spotify spotify_update mouse.entered.global mouse.exited.global \
+           \
+           --add item spotify.back left \
+           --set spotify.back script="$PLUGIN_DIR/spotify.sh" \
+                              drawing=off \
+                              icon=􀊊 \
+           --subscribe spotify.back mouse.clicked \
+           \
+           --add item spotify.playpause left \
+           --set spotify.playpause script="$PLUGIN_DIR/spotify.sh" \
+                                   drawing=off \
+           --subscribe spotify.playpause mouse.clicked \
+           \
+           --add item spotify.forward left \
+           --set spotify.forward script="$PLUGIN_DIR/spotify.sh" \
+                                 icon=􀊌 \
+                                 drawing=off \
+           --subscribe spotify.forward mouse.clicked \
+           \
+           --add item cpu right \
+           --set cpu script="$PLUGIN_DIR/cpu.sh" \
+                     update_freq=5 \
+                     icon=􀧓 \
+           
+           
+
+##### Finalizing Setup #####
+# The below command is only needed at the end of the initial configuration to
+# force all scripts to run the first time, it should never be run in an item script.
+
+sketchybar --update
