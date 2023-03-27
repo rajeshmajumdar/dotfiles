@@ -18,10 +18,10 @@ sketchybar --default updates=when_shown \
                      icon.font="sketchybar-app-font:Regular:12.0" \
                      icon.color=0xffcdf64a
 
-sketchybar --default label.font="FiraCode Nerd Font Mono:Regular:12.0" \
-                     label.color=0xffcdf64a                \
+sketchybar --default label.font="JetBrainsMono Nerd Font Mono:Regular:12.0" \
+                     label.color=0xff88A0A8             \
                      icon.font="FiraCode Nerd Font Mono:Regular:12.0"         \
-                     icon.color=0xffcdf64a                 \
+                     icon.color=0x90cdf64a                 \
                      padding_left=5                        \
                      padding_right=5                       \
                      label.padding_left=4                  \
@@ -37,7 +37,7 @@ sketchybar --add item clock right                              \
                                                                \
            --add item focus center                              \
            --set focus script="$PLUGIN_DIR/focus.sh"            \
-                       icon.color=0xffcdf64a                    \
+                       icon.color=0x90cdf64a                    \
                        icon.font="sketchybar-app-font:Regular:12.0" \
            --subscribe focus front_app_switched window_focus title_change \
                                                                 \
@@ -55,27 +55,6 @@ sketchybar --add item clock right                              \
                        click_script="open -a 'Raycast'"  \
            \
            --add event spotify_update $SPOTIFY_EVENT \
-           \
-           --add item spotify left \
-           --set spotify script="$PLUGIN_DIR/spotify.sh" \
-           --subscribe spotify spotify_update mouse.entered.global mouse.exited.global \
-           \
-           --add item spotify.back left \
-           --set spotify.back script="$PLUGIN_DIR/spotify.sh" \
-                              drawing=off \
-                              icon=􀊊 \
-           --subscribe spotify.back mouse.clicked \
-           \
-           --add item spotify.playpause left \
-           --set spotify.playpause script="$PLUGIN_DIR/spotify.sh" \
-                                   drawing=off \
-           --subscribe spotify.playpause mouse.clicked \
-           \
-           --add item spotify.forward left \
-           --set spotify.forward script="$PLUGIN_DIR/spotify.sh" \
-                                 icon=􀊌 \
-                                 drawing=off \
-           --subscribe spotify.forward mouse.clicked \
            \
            --add item cpu right \
            --set cpu script="$PLUGIN_DIR/cpu.sh" \
